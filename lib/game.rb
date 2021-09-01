@@ -20,24 +20,28 @@ module Mastermind
     # rubocop:enable Layout/LineLength
 
     def play_game
+      puts "Welcome to Mastermind."
       # decide maker and breaker (right now this is always the same)
       # prompt maker for code
-      collect_maker_code
-      # loop through 12 turns:
-      @round_count.times do
-        collect_breaker_guess
-        if check_win?
-          puts 'Codebreaker, you win!'
-          break
-        end
-        feedback_engine
-      end
+      # collect_maker_code # if the human is codemaker
+      computer_generate_code # if the computer is codemaker
+      puts "The Codemaker has selected their code."
+      loop_through_turns
       # after 12, if still no win, declare loss
       puts 'Game over.'
       # new game?
     end
 
     private
+
+    def computer_generate_code
+      @code_board.state.map! do
+        # check if random_color exists in array to avoid duplicates
+        random_color = rand(1..6)
+        random_color = rand(1..6) while @code_board.state.include?(random_color.to_s)
+        random_color.to_s #convert to strings b/c currently guess board is strings. Needed for feedback engine to work
+      end
+    end
 
     def collect_maker_code
       # prompt maker for code
@@ -94,6 +98,22 @@ module Mastermind
       # print state for debugging (may be replaced by display)
       puts "Feedback Board: #{@feedback_board.state}"
       puts ''
+    end
+
+    def loop_through_turns
+      for i in 1..@round_count
+        @feedback_board.reset # reset feedback_board
+        collect_breaker_guess
+        if check_win?
+          puts 'Codebreaker, you win!'
+          break
+        end
+        if i == 12
+          puts "You lose."
+          break
+        end
+        feedback_engine
+      end
     end
   end
 end

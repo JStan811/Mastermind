@@ -9,6 +9,7 @@ module Mastermind
     end
 
     # possible methods: place peg(s), submit guess, change guess, submit/make code
+    
     def make_code(code_board, color1, color2, color3, color4)
       place_peg(code_board, 0, color1)
       place_peg(code_board, 1, color2)

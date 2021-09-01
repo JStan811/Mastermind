@@ -7,6 +7,8 @@
   - feedback engine does not account for duplicates. I could solve this by hardstopping duplicate entry during guess phase, or setting something up during feedback phase(eg if white already exists for this number, do not place another one)
   - how can I have the guesser (or maker) set their board in one prompt rather than 4?
   - currently the code is prompted for rather than randomly chosen by the computer
+    - complete :)
   - the display could be prettier...
   - there's no lose message, just Game over.
+    - complete :)
   - no new game
