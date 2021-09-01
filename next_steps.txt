@@ -12,4 +12,4 @@
   - there's no lose message, just Game over.
     - complete :)
   - no new game
-  - test next step (IGNORE)
+
