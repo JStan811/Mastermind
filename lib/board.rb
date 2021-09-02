@@ -2,9 +2,10 @@
 
 module Mastermind
   # board in which feedback pegs are placed
-  class FeedbackBoard
-    def initialize
-      @state = Array.new(4) # array of 4 positions, all with a value of a color (or number?). Or should the value be a peg (or lack thereof)?
+  class Board
+    def initialize(type)
+      @type = type # guess, code, or feedback
+      @state = Array.new(4) # array of 4 positions, all with a value of a number (if code board or guess board) or color (if feedback board). Or should the value be a peg (or lack thereof)?
     end
 
     # possible methods: read/write state (read board state / place pegs), reset, display board

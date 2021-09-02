@@ -2,9 +2,7 @@
 
 require_relative 'guess_peg'
 require_relative 'player'
-require_relative 'guess_board'
-require_relative 'feedback_board'
-require_relative 'code_board'
+require_relative 'board'
 require_relative 'feedback_peg'
 require_relative 'game'
 require_relative 'game_player_guesses'
@@ -12,9 +10,9 @@ require_relative 'game_computer_guesses'
 
 codemaker = Mastermind::Player.new('Computer', 'Codemaker')
 codebreaker = Mastermind::Player.new('Human', 'Codebreaker')
-code_board = Mastermind::CodeBoard.new
-guess_board = Mastermind::GuessBoard.new
-feedback_board = Mastermind::FeedbackBoard.new
+code_board = Mastermind::Board.new('code')
+guess_board = Mastermind::Board.new('guess')
+feedback_board = Mastermind::Board.new('feedback')
 
 loop do
   puts 'Player, which would you like to play as?'
