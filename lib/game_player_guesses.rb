@@ -23,18 +23,18 @@ module Mastermind
     def computer_generate_code
       @code_board.state.map! do
         # check if random_color exists in array to avoid duplicates
-        random_color = rand(1..6)
-        random_color = rand(1..6) while @code_board.state.include?(random_color.to_s)
+        random_color = rand(1..@color_count)
+        random_color = rand(1..@color_count) while @code_board.state.include?(random_color.to_s)
         random_color.to_s # convert to strings b/c currently guess board is strings. Needed for feedback engine to work
       end
     end
 
     def collect_breaker_guess_string
       # prompt breaker for guess
-      puts 'Codebreaker, enter your guess as a string of four numbers (1-6). No duplicates or blanks. For example, 1234.'
+      puts "Codebreaker, enter your guess as a string of four numbers (1-#{@color_count}). No duplicates or blanks. For example, 1234."
       guess = gets.chomp
       until guess_string_input_valid?(guess)
-        puts "Invalid entry."
+        puts 'Invalid entry.'
         guess = gets.chomp
       end
       guess_array = guess.split('')
@@ -48,13 +48,13 @@ module Mastermind
     # rubocop:disable Metrics/MethodLength
     def collect_breaker_guess_chars
       # prompt breaker for guess
-      puts 'Codebreaker, place a peg (1-6) in position 1. No duplicates or blanks.'
+      puts "Codebreaker, place a peg (1-#{@color_count}) in position 1. No duplicates or blanks."
       color1 = gets.chomp
-      puts 'Codebreaker, place a peg (1-6) in position 2. No duplicates or blanks.'
+      puts "Codebreaker, place a peg (1-#{@color_count}) in position 2. No duplicates or blanks."
       color2 = gets.chomp
-      puts 'Codebreaker, place a peg (1-6) in position 3. No duplicates or blanks.'
+      puts "Codebreaker, place a peg (1-#{@color_count}) in position 3. No duplicates or blanks."
       color3 = gets.chomp
-      puts 'Codebreaker, place a peg (1-6) in position 4. No duplicates or blanks.'
+      puts "Codebreaker, place a peg (1-#{@color_count}) in position 4. No duplicates or blanks."
       color4 = gets.chomp
       @codebreaker.make_guess(@guess_board, color1, color2, color3, color4)
 
@@ -86,7 +86,7 @@ module Mastermind
 
     def guess_string_input_valid?(string)
       array = string.split('') # to check for duplicate values
-      string.length == 4 && string.delete('1-6').empty? && array.uniq == array
+      string.length == 4 && string.delete("1-#{@color_count}").empty? && array.uniq == array
     end
   end
 end

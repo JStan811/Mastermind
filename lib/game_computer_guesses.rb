@@ -29,13 +29,13 @@ module Mastermind
     # rubocop:disable Metrics/MethodLength
     def collect_maker_code
       # prompt maker for code
-      puts 'Codemaker, place a peg (1-6) in position 1. No duplicates or blanks.'
+      puts "Codemaker, place a peg (1-#{@color_count}) in position 1. No duplicates or blanks."
       color1 = gets.chomp
-      puts 'Codemaker, place a peg (1-6) in position 2. No duplicates or blanks.'
+      puts "Codemaker, place a peg (1-#{@color_count}) in position 2. No duplicates or blanks."
       color2 = gets.chomp
-      puts 'Codemaker, place a peg (1-6) in position 3. No duplicates or blanks.'
+      puts "Codemaker, place a peg (1-#{@color_count}) in position 3. No duplicates or blanks."
       color3 = gets.chomp
-      puts 'Codemaker, place a peg (1-6) in position 4. No duplicates or blanks.'
+      puts "Codemaker, place a peg (1-#{@color_count}) in position 4. No duplicates or blanks."
       color4 = gets.chomp
       @codemaker.make_code(@code_board, color1, color2, color3, color4)
 
@@ -55,8 +55,8 @@ module Mastermind
     def computer_generate_guess
       @guess_board.state.map! do
         # check if random_color exists in array to avoid duplicates
-        random_color = rand(1..6)
-        random_color = rand(1..6) while @guess_board.state.include?(random_color.to_s)
+        random_color = rand(1..@color_count)
+        random_color = rand(1..@color_count) while @guess_board.state.include?(random_color.to_s)
         random_color.to_s # convert to strings b/c currently guess board is strings. Needed for feedback engine to work
       end
     end
@@ -66,7 +66,7 @@ module Mastermind
         if @feedback_board.state[i] == 'Black'
           next
         else
-          @guess_board.state[i] = rand(1..6)
+          @guess_board.state[i] = rand(1..@color_count)
         end
       end
     end
@@ -85,7 +85,7 @@ module Mastermind
             end
           end
         else
-          @guess_board.state[i] = rand(1..6)
+          @guess_board.state[i] = rand(1..@color_count)
         end
       end
     end
