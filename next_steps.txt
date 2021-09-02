@@ -4,3 +4,5 @@
   - so this is actually currently solved the first way (hardstopping duplicate entries)
 - the display could be prettier...
 - no new game
+- add support for duplicates and blanks
+- create super and subclasses (super player - sub human and sub computer, super board, super peg, super game - sub player guesses and sub computer guesses)
