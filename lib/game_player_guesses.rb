@@ -46,25 +46,6 @@ module Mastermind
     end
 
     # rubocop:disable Metrics/MethodLength
-    def collect_breaker_guess_chars
-      # prompt breaker for guess
-      puts "Codebreaker, place a peg (1-#{@color_count}) in position 1. No duplicates or blanks."
-      color1 = gets.chomp
-      puts "Codebreaker, place a peg (1-#{@color_count}) in position 2. No duplicates or blanks."
-      color2 = gets.chomp
-      puts "Codebreaker, place a peg (1-#{@color_count}) in position 3. No duplicates or blanks."
-      color3 = gets.chomp
-      puts "Codebreaker, place a peg (1-#{@color_count}) in position 4. No duplicates or blanks."
-      color4 = gets.chomp
-      @codebreaker.make_guess(@guess_board, color1, color2, color3, color4)
-
-      # print state for debugging (may be replaced by display)
-      puts "Guess Board: #{@guess_board.state}"
-      puts ''
-    end
-    # rubocop:enable Metrics/MethodLength
-
-    # rubocop:disable Metrics/MethodLength
     def loop_through_turns
       (1..@round_count).each do |i|
         @feedback_board.reset # reset feedback_board
@@ -83,10 +64,5 @@ module Mastermind
       end
     end
     # rubocop:enable Metrics/MethodLength
-
-    def guess_string_input_valid?(string)
-      array = string.split('') # to check for duplicate values
-      string.length == 4 && string.delete("1-#{@color_count}").empty? && array.uniq == array
-    end
   end
 end

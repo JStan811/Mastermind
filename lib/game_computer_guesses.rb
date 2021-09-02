@@ -7,7 +7,7 @@ module Mastermind
       puts 'Welcome to Mastermind.'
       puts 'Player, you are the Codemaker. Submit your code and the computer will try to guess it.'
       # user makes code, program saves it into code_board.state
-      @code_board.state = [5, 6, 2, 3] # filler
+      collect_maker_code_string
       # computer guesses, then game checks win
       puts 'Initial guess:'
       computer_generate_guess
@@ -26,24 +26,21 @@ module Mastermind
 
     private
 
-    # rubocop:disable Metrics/MethodLength
-    def collect_maker_code
-      # prompt maker for code
-      puts "Codemaker, place a peg (1-#{@color_count}) in position 1. No duplicates or blanks."
-      color1 = gets.chomp
-      puts "Codemaker, place a peg (1-#{@color_count}) in position 2. No duplicates or blanks."
-      color2 = gets.chomp
-      puts "Codemaker, place a peg (1-#{@color_count}) in position 3. No duplicates or blanks."
-      color3 = gets.chomp
-      puts "Codemaker, place a peg (1-#{@color_count}) in position 4. No duplicates or blanks."
-      color4 = gets.chomp
-      @codemaker.make_code(@code_board, color1, color2, color3, color4)
+    def collect_maker_code_string
+      # prompt breaker for guess
+      puts "Enter your code as a string of four numbers (1-#{@color_count}). No duplicates or blanks. For example, 1234."
+      guess = gets.chomp
+      until guess_string_input_valid?(guess)
+        puts 'Invalid entry.'
+        guess = gets.chomp
+      end
+      code_array = guess.split('')
+      @codebreaker.make_guess(@code_board, code_array[0], code_array[1], code_array[2], code_array[3])
 
       # print state for debugging (may be replaced by display)
-      puts "Code Board: #{@code_board.state}"
+      puts "Guess Board: #{@code_board.state}"
       puts ''
     end
-    # rubocop:enable Metrics/MethodLength
 
     def computer_guessing_code
       # first random generate 4 numbers (could also just do 1234 every first round, that's what I do)
