@@ -1,17 +1,6 @@
-- build out each class, starting from the simplest. Think about the attributes (state) and methods (behavior) of each object
-  - complete :)
-- notes from testing:
-  - no limits on peg entry (rn anything not 1-6 is accepted).
-    - complete :)
-  - peg entry limited (hehe) to only 1-6. Should I use colors or letters instead?
-  - if black on feedback board is earned, should that position get set automatically the next round? should that feedback board position get locked?
-  - feedback engine does not account for duplicates. I could solve this by hardstopping duplicate entry during guess phase, or setting something up during feedback phase(eg if white already exists for this number, do not place another one)
-    - so this is actually currently solved the first way (hardstopping duplicate entries)
-  - how can I have the guesser (or maker) set their board in one prompt rather than 4?
-    - complete :)
-  - currently the code is prompted for rather than randomly chosen by the computer
-    - complete :)
-  - the display could be prettier...
-  - there's no lose message, just Game over.
-    - complete :)
-  - no new game
+- peg entry limited to only 1-6. Should I use colors or letters instead?
+- if black on feedback board is earned, should that position get set automatically the next round? should that feedback board position get locked?
+- feedback engine does not account for duplicates. I could solve this by hardstopping duplicate entry during guess phase, or setting something up during feedback phase(eg if white already exists for this number, do not place another one)
+  - so this is actually currently solved the first way (hardstopping duplicate entries)
+- the display could be prettier...
+- no new game

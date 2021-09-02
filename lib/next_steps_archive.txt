@@ -1,0 +1,10 @@
+- build out each class, starting from the simplest. Think about the attributes (state) and methods (behavior) of each object
+  - complete :)
+- no limits on peg entry (rn anything not 1-6 is accepted).
+    - complete :)
+- how can I have the guesser (or maker) set their board in one prompt rather than 4?
+    - complete :)
+- currently the code is prompted for rather than randomly chosen by the computer
+    - complete :)
+- there's no lose message, just Game over.
+    - complete :)

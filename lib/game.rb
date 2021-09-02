@@ -26,6 +26,8 @@ module Mastermind
       # collect_maker_code # if the human is codemaker
       computer_generate_code # if the computer is codemaker
       puts 'The Codemaker has selected their code.'
+      puts 'Codebreaker, after you submit your guess, you will be shown the feedback board. Each position there corresponds to the matching position on your guess board. A Black means your guess in that position is exactly correct. A White means that number exists in the code but not in that position.'
+      puts 'Good luck :)'
       loop_through_turns
       # after 12, if still no win, declare loss
       puts 'Game over.'
