@@ -3,7 +3,7 @@
 module Mastermind
   # this contains the logic of a game where computer guesses the code
   class GameComputerGuesses < Game
-    def play_game_computer_guesses
+    def play_game
       puts 'Welcome to Mastermind.'
       puts 'Player, you are the Codemaker. Submit your code and the computer will try to guess it.'
       # user makes code, program saves it into code_board.state

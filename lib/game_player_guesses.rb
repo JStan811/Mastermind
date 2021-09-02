@@ -3,7 +3,7 @@
 module Mastermind
   # this contains the logic of the game when the player is guessing the code
   class GamePlayerGuesses < Game
-    def play_game_player_guesses
+    def play_game
       puts 'Welcome to Mastermind.'
       # decide maker and breaker (right now this is always the same)
       # prompt maker for code
