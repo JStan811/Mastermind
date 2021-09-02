@@ -63,7 +63,6 @@ module Mastermind
     def collect_breaker_guess_string
       # prompt breaker for guess
       puts 'Codebreaker, enter your guess as a string of four numbers (1-6). No duplicates or blanks. For example, 1234.'
-      guess = ''
       guess = gets.chomp
       until guess_string_input_valid?(guess)
         puts "Invalid entry."
