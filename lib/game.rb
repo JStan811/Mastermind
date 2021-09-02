@@ -62,8 +62,13 @@ module Mastermind
 
     def collect_breaker_guess_string
       # prompt breaker for guess
-      puts 'Codebreaker, enter your guess as a string of four numbers (1-6). For example, 1234.'
+      puts 'Codebreaker, enter your guess as a string of four numbers (1-6). No duplicates or blanks. For example, 1234.'
+      guess = ''
       guess = gets.chomp
+      until guess_string_input_valid?(guess)
+        puts "Invalid entry."
+        guess = gets.chomp
+      end
       guess_array = guess.split('')
       @codebreaker.make_guess(@guess_board, guess_array[0], guess_array[1], guess_array[2], guess_array[3])
 
@@ -72,7 +77,7 @@ module Mastermind
       puts ''
     end
 
-    def collect_breaker_guess
+    def collect_breaker_guess_chars
       # prompt breaker for guess
       puts 'Codebreaker, place a peg (1-6) in position 1. No duplicates or blanks.'
       color1 = gets.chomp
@@ -128,6 +133,11 @@ module Mastermind
         end
         feedback_engine
       end
+    end
+
+    def guess_string_input_valid?(string)
+      array = string.split('') # to check for duplicate values
+      string.length == 4 && string.delete('1-6').empty? && array.uniq == array
     end
   end
 end
