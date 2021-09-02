@@ -6,6 +6,7 @@ Necessary:
   - finish working on computer_change_guess method in game_computer_guesses.rb then delete computer_change_guess_only_black
   - replace game_computer_guesses.rb:10 with code collecting user input
   - rubocop it all boy!!
+  - (At the end) update README with skills demonstrated
 
 Optional:
   - peg entry limited to only 1-6. Should I use colors or letters instead?
