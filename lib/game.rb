@@ -9,14 +9,14 @@ module Mastermind
       @code_board = code_board
       @guess_board = guess_board
       @feedback_board = feedback_board
-      @round_count = 12
+      @round_count = 24
       @color_count = 6
       @duplicates_allowed = false
       @blanks_allowed = false
     end
 
     # rubocop:disable Layout/LineLength
-    # possible methods: handle turn, check and declare winner/loser, keep score, feedback engine (decide feedback, set feedback, display feedback), play game (prompt maker for code -> prompt breaker for guess -> collect guess -> run feedback engine -> check for winner. if none, continue -> if after 12th round no win, declare loser -> new game?)
+    # possible methods: handle turn, check and declare winner/loser, keep score, feedback engine (decide feedback, set feedback, display feedback), play game (prompt maker for code -> prompt breaker for guess -> collect guess -> run feedback engine -> check for winner. if none, continue -> if after last round no win, declare loser -> new game?)
     # rubocop:enable Layout/LineLength
 
     private

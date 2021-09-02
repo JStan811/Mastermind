@@ -4,16 +4,16 @@ module Mastermind
   # this contains the logic of the game when the player is guessing the code
   class GamePlayerGuesses < Game
     def play_game
-      puts 'Welcome to Mastermind.'
       # decide maker and breaker (right now this is always the same)
       # prompt maker for code
       # collect_maker_code # if the human is codemaker
       computer_generate_code # if the computer is codemaker
+      puts 'You are the Codebreaker.'
       puts 'The Codemaker has selected their code.'
-      puts 'Codebreaker, after you submit your guess, you will be shown the feedback board. Each position there corresponds to the matching position on your guess board. A Black means your guess in that position is exactly correct. A White means that number exists in the code but not in that position.'
+      puts 'After you submit your guess, you will be shown the feedback board. Each position there corresponds to the matching position on your guess board. A Black means your guess in that position is exactly correct. A White means that number exists in the code but not in that position.'
       puts 'Good luck :)'
       loop_through_turns
-      # after 12, if still no win, declare loss
+      # after final round, if still no win, declare loss
       puts 'Game over.'
       # new game?
     end
@@ -55,7 +55,7 @@ module Mastermind
           puts 'Codebreaker, you win!'
           break
         end
-        if i == 12
+        if i == @round_count
           puts "Code Board: #{@code_board.state}"
           puts 'You lose.'
           break

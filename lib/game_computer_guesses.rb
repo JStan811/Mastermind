@@ -4,8 +4,7 @@ module Mastermind
   # this contains the logic of a game where computer guesses the code
   class GameComputerGuesses < Game
     def play_game
-      puts 'Welcome to Mastermind.'
-      puts 'Player, you are the Codemaker. Submit your code and the computer will try to guess it.'
+      puts 'You are the Codemaker. Submit your code and the computer will try to guess it.'
       # user makes code, program saves it into code_board.state
       collect_maker_code_string
       # computer guesses, then game checks win
@@ -17,7 +16,7 @@ module Mastermind
         puts 'Computer has guessed correctly. You lose.'
         return
       end
-      # computer changes submission up to 12 times (round) based on feedback
+      # computer changes submission up to 12 times (ie @round_count) based on feedback
       # game declares player winner or player loser
       loop_through_turns_computer_guessing
       puts 'Game over.'
@@ -45,7 +44,7 @@ module Mastermind
     def computer_guessing_code
       # first random generate 4 numbers (could also just do 1234 every first round, that's what I do)
       computer_generate_guess
-      # then keep changing guess based on feedback up to 12 times or until the code is right
+      # then keep changing guess based on feedback up to 12(@round_count) times or until the code is right
       # change logic: keep blacks the same, move whites one position to the right, increase nils by 1 (skipping over whites and blacks)
     end
 
@@ -63,7 +62,7 @@ module Mastermind
         if @feedback_board.state[i] == 'Black'
           next
         else
-          @guess_board.state[i] = rand(1..@color_count)
+          @guess_board.state[i] = rand(1..@color_count).to_s
         end
       end
     end
@@ -82,14 +81,13 @@ module Mastermind
             end
           end
         else
-          @guess_board.state[i] = rand(1..@color_count)
+          @guess_board.state[i] = rand(1..@color_count).to_s
         end
       end
     end
 
     def computer_guess_turn
       feedback_engine
-      # computer change guess
       computer_change_guess_just_black
       puts "Guess Board: #{@guess_board.state}"
     end
@@ -97,7 +95,7 @@ module Mastermind
     # rubocop:disable Metrics/MethodLength
     def loop_through_turns_computer_guessing
       (1..@round_count).each do |i|
-        @feedback_board.reset # reset feedback_board
+        @feedback_board.reset
         puts ''
         puts "Round #{i}:"
         computer_guess_turn
@@ -106,7 +104,7 @@ module Mastermind
           puts 'Computer has guessed correctly. You lose.'
           break
         end
-        if i == 12
+        if i == @round_count
           puts "Code Board: #{@code_board.state}"
           puts 'Computer was not able to guess your code. You win.'
           break

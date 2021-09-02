@@ -7,43 +7,15 @@ require_relative 'feedback_peg'
 require_relative 'game'
 require_relative 'game_player_guesses'
 require_relative 'game_computer_guesses'
+require_relative 'game_master'
 
 codemaker = Mastermind::Player.new('Computer', 'Codemaker')
 codebreaker = Mastermind::Player.new('Human', 'Codebreaker')
 code_board = Mastermind::Board.new('code')
 guess_board = Mastermind::Board.new('guess')
 feedback_board = Mastermind::Board.new('feedback')
+game_computer_guesses = Mastermind::GameComputerGuesses.new(codemaker, codebreaker, code_board, guess_board, feedback_board)
+game_player_guesses = Mastermind::GamePlayerGuesses.new(codemaker, codebreaker, code_board, guess_board, feedback_board)
+game_master = Mastermind::GameMaster.new(game_player_guesses, game_computer_guesses)
 
-loop do
-  puts 'Player, which would you like to play as?'
-  puts '1) Codemaker'
-  puts '2) Codebreaker'
-  player_selection = gets.chomp
-  case player_selection
-  when '1'
-    puts ''
-    a_game = Mastermind::GameComputerGuesses.new(codemaker, codebreaker, code_board, guess_board, feedback_board)
-    a_game.play_game
-    puts 'New game? (Y/N)'
-    new_game_selection = gets.chomp
-    if new_game_selection == 'Y'
-      next
-    else
-      break
-    end
-  when '2'
-    puts ''
-    a_game = Mastermind::GamePlayerGuesses.new(codemaker, codebreaker, code_board, guess_board, feedback_board)
-    a_game.play_game
-    puts 'New game? (Y/N)'
-    new_game_selection = gets.chomp
-    if new_game_selection == 'Y'
-      next
-    else
-      break
-    end
-  else
-    puts 'Invalid selection.'
-    puts ''
-  end
-end
+game_master.game_loop
