@@ -43,5 +43,10 @@ module Mastermind
       puts "Feedback Board: #{@feedback_board.state}"
       puts ''
     end
+
+    def guess_string_input_valid?(string)
+      array = string.split('') # to check for duplicate values
+      string.length == 4 && string.delete("1-#{@color_count}").empty? && array.uniq == array
+    end
   end
 end
