@@ -73,11 +73,17 @@ module Mastermind
 
     def computer_change_guess
       # look at feedback engine. if there is a black, keep that position the same in the guess board. if white, move the color in that position one to the right skipping over black. if nil, randomize (update this in the future to randomize, skipping blacks and whites)
-      @guess_board.state.each_with_index do |num, i|
+      # another option for response to white: find first nil, if there are no nils, find first white that isn't self
+      # this second option might need an empty array, locked_positions, that you push any i into that shouldn't be touched
+      @guess_board.state.each_with_index do |x, i|
         if @feedback_board.state[i] == 'Black'
           next
         elsif @feedback_board.state[i] == 'White'
-          @guess_board.state[i + 1] = num
+          @feedback_board.state.each_with_index do |y, j|
+            if @feedback_board.state[i + 1] != 'Black'
+              @guess_board.state[i + 1] = x
+            end
+          end
         else
           @guess_board.state[i] = rand(1..6)
         end
