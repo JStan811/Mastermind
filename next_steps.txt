@@ -2,9 +2,7 @@ Necessary:
   - feedback engine does not account for duplicates. I could solve this by hardstopping duplicate entry during guess phase, or setting something up during feedback phase(eg if white already exists for this number, do not place another one)
     - so this is actually currently solved the first way (hardstopping duplicate entries)
   - create super and subclasses (super player - sub human and sub computer, super board, super peg, super game - sub player guesses and sub computer guesses)
-  - pull game loop and new game functionality out of main.rb and push into one or more classes
   - finish working on computer_change_guess method in game_computer_guesses.rb then delete computer_change_guess_only_black
-  - replace game_computer_guesses.rb:10 with code collecting user input
   - change all entries in a board to be a peg object? (or just get rid of peg objects entirely?)
   - rubocop it all boy!!
   - (At the end) update README with skills demonstrated
@@ -12,6 +10,7 @@ Necessary:
 Optional:
   - peg entry limited to only 1-6. Should I use colors or letters instead?
   - if black on feedback board is earned, should that position get set automatically the next round? should that feedback board position get locked?
-  - the display could be prettier...
+  - improve display (create some kind of board design?)
+  - improve text (eg "Computer guesses: ")
   - add support for duplicates and blanks
   - move next steps into github issues?
