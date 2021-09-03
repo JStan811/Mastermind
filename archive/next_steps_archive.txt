@@ -13,4 +13,6 @@
 - pull game loop and new game functionality out of main.rb and push into one or more classes
   - complete :) (created GameMaster class)
 - replace game_computer_guesses.rb:10 with code collecting user input
-    - complete :)
+  - complete :)
+- finish working on computer_change_guess method in game_computer_guesses.rb then delete computer_change_guess_only_black
+  - complete :)
