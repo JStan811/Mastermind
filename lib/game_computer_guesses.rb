@@ -95,6 +95,7 @@ module Mastermind
     # rubocop:disable Metrics/MethodLength
     def loop_through_turns_computer_guessing
       (1..@round_count).each do |i|
+        sleep 3
         @feedback_board.reset
         puts ''
         puts "Round #{i}:"
