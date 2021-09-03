@@ -6,7 +6,7 @@ module Mastermind
     def play_game
       puts 'You are the Codemaker. Submit your code and the computer will try to guess it.'
       collect_maker_code_string
-      puts 'Initial guess:'
+      puts "Computer's initial guess:"
       computer_generate_guess
       puts "Guess Board: #{@guess_board.state}"
       puts ''
@@ -96,6 +96,8 @@ module Mastermind
 
     def computer_guess_turn
       feedback_engine
+      sleep 2.5
+      puts "The computer is thinking..."
       computer_change_guess
       puts "Guess Board: #{@guess_board.state}"
     end
