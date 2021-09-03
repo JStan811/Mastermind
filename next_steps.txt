@@ -1,6 +1,7 @@
 
   - feedback engine does not account for duplicates.(eg if white already exists for this number, do not place another one)
   - rubocop cleanup
+  - refactor
   - add support for duplicates and blanks
   - change how feedback board works (I think I misunderstood it :( Its not a board that corresponds per position to the code board, you just get a number of feedback pegs back. IE you might get 2 blacks and 2 whites, meaning 2 of your colors are in the right position, but it doesn't tell you which ones)
   - peg entry limited to only 1-6. Should I use colors or letters instead?
