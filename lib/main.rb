@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'guess_peg'
 require_relative 'player'
 require_relative 'board'
-require_relative 'feedback_peg'
 require_relative 'game'
 require_relative 'game_player_guesses'
 require_relative 'game_computer_guesses'

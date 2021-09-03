@@ -44,16 +44,6 @@ module Mastermind
       end
     end
 
-    def computer_change_guess_just_black
-      @guess_board.state.each_with_index do |num, i|
-        if @feedback_board.state[i] == 'Black'
-          next
-        else
-          @guess_board.state[i] = rand(1..@color_count).to_s
-        end
-      end
-    end
-
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Metrics/AbcSize
     def computer_change_guess
