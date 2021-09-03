@@ -9,7 +9,7 @@ module Mastermind
       @code_board = code_board
       @guess_board = guess_board
       @feedback_board = feedback_board
-      @round_count = 24
+      @round_count = 12
       @color_count = 6
       @duplicates_allowed = false
       @blanks_allowed = false
